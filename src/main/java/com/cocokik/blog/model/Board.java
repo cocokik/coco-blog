@@ -25,7 +25,8 @@ public class Board {
     @Column(nullable = false, length = 200)
     private String title;
 
-    @Lob //대용량 데이터를 쓸때
+//    @Lob //대용량 데이터를 쓸때 롱텍스트로 잡혀야 하는덷 타이니텍스트로 생성됨,,,
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String contents;
 
     @ColumnDefault("0") //string인 경우에는 쌍따옴표 안에 홀따옴표

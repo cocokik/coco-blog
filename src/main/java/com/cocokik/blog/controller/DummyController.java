@@ -26,9 +26,9 @@ public class DummyController {
     }
 
     @GetMapping("/dummy/user/page")
-    public List<User> pageList(@PageableDefault(size=2,sort="id",direction = Sort.Direction.DESC) Pageable pageable){
+    public Page<User> pageList(@PageableDefault(size=2,sort="id",direction = Sort.Direction.DESC) Pageable pageable){
         Page<User> userPage = userRepository.findAll(pageable);
-        return userPage.getContent();
+        return userPage;
     }
 
     @DeleteMapping("/dummy/user/{id}")

@@ -23,6 +23,9 @@ public class User {
     private int id;
     @Column(nullable = false, length = 30, unique = true)
     private String userName;
+
+    @Column(nullable = true)
+    private String oauth;
     @Column(nullable = false, length = 100)
     private String passWord;
     @Column(nullable = false, length = 100)
