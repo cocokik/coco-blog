@@ -29,13 +29,13 @@
 
           <div class="card">
             <div class="card-header">댓글</div>
-            <ul id="reply--box" class="list-group">
+            <ul id="reply-box" class="list-group">
                 <c:forEach var="reply" items="${board.replys}">
-                    <li id="reply--1" class="list-group-item d-flex justify-content-between">
+                    <li id="reply-${reply.id}" class="list-group-item d-flex justify-content-between">
                         <div>${reply.content}</div>
                         <div class="d-flex j">
                             <div class="font-italic">작성자 : ${reply.user.userName} &nbsp;</div>
-                            <button class="badge btn btn-secondary">삭제</button>
+                            <button onclick="index.replyDelete(${board.id}, ${reply.id})" class="badge btn btn-secondary">삭제</button>
                         </div>
                     </li>
                 </c:forEach>

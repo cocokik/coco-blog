@@ -26,7 +26,6 @@ let index = {
              if(res.data == 1){
                  console.log(res);
                  alert("저장 완료");
-                 alert(JSON.stringify(res));
                  location.href="/";
              } else {
              alert("저장 실패");
@@ -52,7 +51,6 @@ let index = {
              if(res.data == 1){
                  console.log(res);
                  alert("수정 완료");
-                 alert(JSON.stringify(res));
                  location.href="/";
              } else {
              alert("수정 실패");
