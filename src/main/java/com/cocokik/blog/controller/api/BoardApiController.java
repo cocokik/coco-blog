@@ -1,6 +1,7 @@
 package com.cocokik.blog.controller.api;
 
 import com.cocokik.blog.config.auth.PrincipalDetail;
+import com.cocokik.blog.dto.ReplySaveDto;
 import com.cocokik.blog.dto.ResponseDto;
 import com.cocokik.blog.model.Board;
 import com.cocokik.blog.model.Reply;
@@ -35,9 +36,8 @@ public class BoardApiController {
     }
 
     @PostMapping("/api/board/{id}/reply")
-    public ResponseDto<Integer> replySave(@RequestBody Reply reply
-            ,@PathVariable int id , @AuthenticationPrincipal PrincipalDetail principalDetail) {
-        boardService.댓글작성(principalDetail.getUser(), id, reply);
+    public ResponseDto<Integer> replySave(@RequestBody ReplySaveDto reply) {
+        boardService.댓글작성(reply);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }

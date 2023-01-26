@@ -33,4 +33,15 @@ public class Reply {
 
     @CreationTimestamp
     private Timestamp createDate;
+
+    @Override //오브젝트를 찍으면 toString 이 자동으로 실행됨.
+    public String toString() {
+        return "Reply{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", board=" + board +
+                ", user=" + user +
+                ", createDate=" + createDate +
+                '}';
+    }
 }
