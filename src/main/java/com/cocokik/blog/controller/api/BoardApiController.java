@@ -3,6 +3,7 @@ package com.cocokik.blog.controller.api;
 import com.cocokik.blog.config.auth.PrincipalDetail;
 import com.cocokik.blog.dto.ResponseDto;
 import com.cocokik.blog.model.Board;
+import com.cocokik.blog.model.Reply;
 import com.cocokik.blog.service.BoardService;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class BoardApiController {
     @Autowired
     private BoardService boardService;
+
     @PostMapping("/api/board")
     public ResponseDto<Integer> save(@RequestBody Board board, @AuthenticationPrincipal PrincipalDetail principalDetail) {
         boardService.글저장(board, principalDetail.getUser());
@@ -30,5 +32,12 @@ public class BoardApiController {
     public ResponseDto<Integer> deleteById(@PathVariable int id) {
         boardService.글삭제(id);
         return new ResponseDto<Integer>(200, 1);
+    }
+
+    @PostMapping("/api/board/{id}/reply")
+    public ResponseDto<Integer> replySave(@RequestBody Reply reply
+            ,@PathVariable int id , @AuthenticationPrincipal PrincipalDetail principalDetail) {
+        boardService.댓글작성(principalDetail.getUser(), id, reply);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }

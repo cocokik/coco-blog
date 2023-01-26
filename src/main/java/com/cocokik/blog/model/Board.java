@@ -1,5 +1,6 @@
 package com.cocokik.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,10 +39,12 @@ public class Board {
     @JoinColumn(name="userId") //FK
     private User user;
 
+    @OrderBy("id desc")
+    @JsonIgnoreProperties({"board"}) //reply 에서 보드를 참조할때 무한 참조를 막기 위해서. reply 에서  board 를 json 으로 반환 안하도록 막는다.
     @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) //연관관계의 주인이 아니다..(FK 가 아님) 디비에 컬럼생성 안함.
     //board 는 Reply 의 board 이다 (Reply의 Fkd의 board), 여기서는 기본이 LAZY 전략 이어서 EAGER 로 변경)
     //LAZY 는 필요할때 같이 디비에서 조회, EAGER는 board 셀렉할때 Reply도 무조건 같이 셀렉트한다.
-    private List<Reply> reply;  //board를 셀렉트할때 reply도 필요하기 때문에...
+    private List<Reply> replys;  //board를 셀렉트할때 reply도 필요하기 때문에...
 
     @CreationTimestamp
     private Timestamp createDate;

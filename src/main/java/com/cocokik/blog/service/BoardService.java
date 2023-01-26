@@ -1,8 +1,10 @@
 package com.cocokik.blog.service;
 
 import com.cocokik.blog.model.Board;
+import com.cocokik.blog.model.Reply;
 import com.cocokik.blog.model.User;
 import com.cocokik.blog.repository.BoardRepository;
+import com.cocokik.blog.repository.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +20,9 @@ import java.util.List;
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private ReplyRepository replyRepository;
 
     @Transactional //여러 트랜잭션을 하나의 서비스로 관리하기 위해서 서비스 사용 -> 중간에 에러나면 롤백
     public void 글저장(Board board, User user) {
@@ -47,5 +52,13 @@ public class BoardService {
         board1.setContents(board.getContents());
         board1.setTitle(board.getTitle());
         //트랜잭션 종료시 더티체킹 일어남 -> 영속화된 데이터가 달라졌으므로 디비로 자동 업데이트 된다(플러시, 커밋)
+    }
+
+    @Transactional
+    public void 댓글작성(User user, int id, Reply requestReply) {
+        Board board = boardRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("보드를 찾을 수 없습니다."));
+        requestReply.setUser(user);
+        requestReply.setBoard(board);
+        replyRepository.save(requestReply);
     }
 }
