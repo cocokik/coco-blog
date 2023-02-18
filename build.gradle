@@ -3,9 +3,10 @@ plugins {
 	id 'org.springframework.boot' version '3.0.1'
 	id 'io.spring.dependency-management' version '1.1.0'
 }
+apply plugin: 'war'
 
 group = 'com.cocokik'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1-CO'
 sourceCompatibility = '19'
 
 configurations {
@@ -23,13 +24,19 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.security:spring-security-taglibs'
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:'
+//	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	// https://mvnrepository.com/artifact/org.apache.tomcat/jasper
+	implementation 'org.apache.tomcat:tomcat-jasper:10.1.5'
+
+
 	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0'
-	compileOnly 'org.projectlombok:lombok'
+
+	implementation 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	implementation 'com.mysql:mysql-connector-j:8.0.31'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'javax.servlet:javax.servlet-api:4.0.1'
 //	testImplementation 'org.springframework.security:spring-security-test'
 }
 tasks.named('test') {

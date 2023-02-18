@@ -69,7 +69,7 @@ public class UserController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
         //바디
-        MultiValueMap<String, String> params = new LinkedMultiValueMap();
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<String,String>();
         params.add("client_id", "4bbc99f4047d689792b910febf22f9a6");
         params.add("redirect_uri", "http://localhost/auth/kakao/callback");
         params.add("grant_type", "authorization_code");
@@ -111,8 +111,6 @@ public class UserController {
         KakaoProfile kakaoProfile = null;
         try {
             kakaoProfile = obMapper2.readValue(response2.getBody(), KakaoProfile.class);
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

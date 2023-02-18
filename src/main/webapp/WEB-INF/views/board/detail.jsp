@@ -22,7 +22,7 @@
           <hr />
           <div class="form-group">
               <label for="content">내용:</label>
-              <div>${board.contents}</div>
+              <div style="overflow: hidden;">${board.contents}</div>
           </div>
           <br/>
           <hr />

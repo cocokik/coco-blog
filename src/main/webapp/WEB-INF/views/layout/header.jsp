@@ -19,6 +19,9 @@
       <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
       <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
+
+    <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
     <title>COCOKIK</title>
 
   </head>
@@ -26,7 +29,7 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">코코킥</a>
+        <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,15 +38,15 @@
           <c:choose>
             <c:when test="${empty principal}">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" href="/auth/joinForm">회원가입</a></li>
-                <li class="nav-item"><a class="nav-link" href="/auth/loginForm">로그인</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/auth/joinForm">Join</a></li>
+                <li class="nav-item"><a class="nav-link" href="/auth/loginForm">Login</a></li>
               </ul>
             </c:when>
             <c:otherwise>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active"  href="/board/saveForm">글쓰기</a></li>
-                <li class="nav-item"><a class="nav-link" href="/user/updateForm">회원정보</a></li>
-                <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+                <li class="nav-item"><a class="nav-link active"  href="/board/saveForm">Write</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user/updateForm">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
               </ul>
             </c:otherwise>
           </c:choose>

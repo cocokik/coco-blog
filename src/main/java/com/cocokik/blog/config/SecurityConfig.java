@@ -56,10 +56,10 @@ public class SecurityConfig  {
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests()
                 .requestMatchers("/", "").permitAll()
-                .requestMatchers("/auth/**", "/dummy/**").permitAll()
+                .requestMatchers("/auth/**", "/dummy/**", "/user/aboutForm").permitAll()
                 .requestMatchers("/js/**", "/image/**", "/css/**").permitAll()
                 .requestMatchers("/aa/**", "/WEB-INF/**").permitAll() //JSP 경로도 추가해야함..
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and().formLogin().loginPage("/auth/loginForm")
                 .loginProcessingUrl("/auth/loginProc") //spring security 가 해당 url로 오는 요청을 가로챈다.
                 .defaultSuccessUrl("/");

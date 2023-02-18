@@ -3,11 +3,14 @@ package com.cocokik.blog.repository;
 import com.cocokik.blog.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 //DAO
 //자동으로 빈에 등록된다. 그래서 어노테이션 생략가능 @Repository
+
+//@Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     //user 테이블을 관리하는 리파지토리 인티져는 유저의 프라이머리키 타입
 

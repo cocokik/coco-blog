@@ -1,11 +1,13 @@
 package com.cocokik.blog.repository;
 
-import com.cocokik.blog.dto.ReplySaveDto;
+
 import com.cocokik.blog.model.Reply;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
+//@Repository
 public interface ReplyRepository extends JpaRepository<Reply, Integer> {
 
     @Modifying

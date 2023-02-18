@@ -21,7 +21,10 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
     @GetMapping({"", "/"})
-    public String index(Model model, @PageableDefault(size=3, sort ="id", direction = Sort.Direction.DESC) Pageable pageable){//Model model){ //@AuthenticationPrincipal PrincipalDetail principalDetail) {
+    public String index(Model model, @PageableDefault(size=10, sort ="id", direction = Sort.Direction.DESC) Pageable pageable){//Model model){ //@AuthenticationPrincipal PrincipalDetail principalDetail) {
+        System.out.println("this is run");
+        System.out.println("this is run");
+        System.out.println("this is run");
 //        System.out.println("#####" + principalDetail.getUsername() + " " + principalDetail.getPassword());
         // /WEB-INF/views/ ? .jsp
         model.addAttribute("boards", boardService.메인글목록(pageable));

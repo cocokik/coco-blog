@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="layout/header.jsp"%>
-    <container>
-        <c:forEach var="board" items="${boards.content}">
-            <div class="card m-3" style="width:400px">
-              <div class="card-body">
-                <h4 class="card-title">${board.title}</h4>
-                <a href="/board/${board.id}" class="btn btn-primary">See More</a>
-              </div>
+<%@ include file="layout/mainHeader.jsp"%>
+
+<div id="container">
+    <c:forEach var="board" items="${boards.content}">
+        <div class="list">
+            <div class="one">  
+                <h3><strong>${board.title}</strong></h3><br>
+                <div class="index-content">${board.contents}</div>
+                <a href="/board/${board.id}" class="btn btn-secondery">Click or scroll</a>
             </div>
-        </c:forEach>
-    </container>
+        </div>
+    </c:forEach>
     <br />
-    <ul class="pagination justify-content-center">
+
+    <!-- <ul class="pagination justify-content-center">
         <c:choose>
             <c:when test="${boards.first}">
                 <li class="page-item disabled"><a class="page-link" href="?page=${boards.number-1}">Previous</a></li>
@@ -30,5 +32,13 @@
                     <li class="page-item"><a class="page-link" href="?page=${boards.number+1}">Next</a></li>
             </c:otherwise>
         </c:choose>
-    </ul>
-<%@ include file="layout/footer.jsp"%>
+    </ul> -->
+    <div class="mt-5 p-4 bg-dark text-white text-center">
+        <p>Created by Cocokik</p>
+        <p>❤️</p>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/scrollmove.js"></script>
+    
+</body>
